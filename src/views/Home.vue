@@ -1,6 +1,7 @@
 <template>
   <div>
-    <AppButton />
+    <AppButton :to="{ name: 'signin' }" />
+    <AppButton danger />
   </div>
 </template>
 
