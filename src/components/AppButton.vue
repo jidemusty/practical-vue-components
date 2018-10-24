@@ -1,10 +1,14 @@
 <template>
-    <router-link 
+    <router-link
+        @click.native="clicked"
         class="border-none no-underline rounded text-white"
+        :disabled="disabled"
         :to=to
         :class="[
             themes[theme],
-            sizes[size]
+            sizes[size], {
+                'opacity-50 cursor-not-allowed': disabled
+            }
         ]"
     >
         Sign In
@@ -26,6 +30,11 @@ export default {
         }
     },
     props: {
+        disabled: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
         theme: {
             required: false,
             type: String,
@@ -44,6 +53,15 @@ export default {
                     name: 'home'
                 }
             }
+        }
+    },
+    methods: {
+        clicked(e) {
+            if (this.disabled) {
+                return
+            }
+
+            this.$emit('click', e)
         }
     }
 }
