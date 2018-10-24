@@ -1,7 +1,7 @@
 <template>
   <div>
-    <AppLabel forInput="first_name">First name</AppLabel>
-    <AppInput name="first_name" type="email" placeholder="Enter your email" />
+    {{ form }}
+    <AppTextarea name="bio" v-model="form.bio" />
   </div>
 </template>
 
@@ -9,25 +9,22 @@
 import AppInput from '@/components/AppInput'
 import AppLabel from '@/components/AppLabel'
 import AppButton from '@/components/AppButton'
+import AppTextarea from '@/components/AppTextarea'
 
 export default {
   name: 'home',
   components: {
     AppButton,
     AppInput,
-    AppLabel
+    AppLabel,
+    AppTextarea
   },
   data() {
     return {
       form: {
-        email: 'ejooooo'
+        bio: ''
       }
     }
   },
-  methods: {
-    doThis() {
-      console.log('yaaay')
-    }
-  }
 }
 </script>
