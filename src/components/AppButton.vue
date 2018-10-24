@@ -11,7 +11,7 @@
             }
         ]"
     >
-        Sign In
+        <slot />
     </router-link>
 </template>
 
