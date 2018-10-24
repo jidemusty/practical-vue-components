@@ -4,6 +4,7 @@
         :name="name"
         :id="name"
         :value="value"
+        :rows="rows"
         class="block mb-2 mt-2 p-3 shadow-outline w-full"
         @input="$emit('input', $event.target.value)"
     ></textarea>
@@ -11,6 +12,11 @@
 
 <script>
 export default {
+  computed: {
+      rows () {
+          return Math.max(5, this.value.split("\n").length)
+      }
+  },
   props: {
     value: {
       required: false,
