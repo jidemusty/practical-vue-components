@@ -1,11 +1,13 @@
 <template>
-    <div v-if="visible">
+    <transition name="modal">
+      <div v-if="visible">
         <div class="app-modal" @click.prevent="visible = false"></div>
         <div class="app-modal-inner">
             <a href="#" @click.prevent="visible = false">Close</a>
             <slot name="body" :params="params" />
         </div>
     </div>
+    </transition>
 </template>
 
 <script>
@@ -56,5 +58,13 @@ export default {
   max-width: 500px;
   border-radius: 3px;
   z-index: 9999;
+}
+
+.modal-enter-active, .modal-leave-active {
+  transition: all 200ms;
+}
+
+.modal-enter, .modal-leave-active {
+  opacity: 0;
 }
 </style>
