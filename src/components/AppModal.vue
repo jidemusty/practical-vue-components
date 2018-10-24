@@ -1,9 +1,9 @@
 <template>
     <transition name="modal">
       <div v-if="visible">
-        <div class="app-modal" @click.prevent="visible = false"></div>
+        <div class="app-modal" @click.prevent="$modal.hide(name)"></div>
         <div class="app-modal-inner">
-            <a href="#" @click.prevent="visible = false">Close</a>
+            <a href="#" @click.prevent="$modal.hide(name)">Close</a>
             <slot name="body" :params="params" />
         </div>
     </div>
@@ -31,6 +31,12 @@ export default {
         this.visible = true;
       }
     });
+
+    this.$modal.$event.$on('hide', (modal) => {
+      if (this.name === modal) {
+        this.visible = false;
+      }
+    })
   },
   mounted () {
     document.addEventListener('keydown', (e) => {
