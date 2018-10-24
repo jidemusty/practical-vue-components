@@ -1,6 +1,7 @@
 <template>
   <div>
-    <AppInput name="first_name" type="password" />
+    {{ form }}
+    <AppInput name="first_name" type="email" v-model="form.email" />
   </div>
 </template>
 
@@ -13,6 +14,13 @@ export default {
   components: {
     AppButton,
     AppInput
+  },
+  data() {
+    return {
+      form: {
+        email: ''
+      }
+    }
   },
   methods: {
     doThis() {

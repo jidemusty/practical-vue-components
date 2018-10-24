@@ -5,6 +5,7 @@
             :name="name"
             :id="name"
             class="block mb-2 p-3 shadow-outline w-full"
+            @input="$emit('input', $event.target.value)"
         />
 
         <a href="#" v-if="type == 'password'" @click.prevent="passwordRevealed = !passwordRevealed">
