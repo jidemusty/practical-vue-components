@@ -104,6 +104,8 @@ let colors = {
   'blue-lighter': '#bcdefa',
   'blue-lightest': '#eff8ff',
 
+  'modal-blue': '#141420',
+
   'indigo-darkest': '#191e38',
   'indigo-darker': '#2f365f',
   'indigo-dark': '#5661b3',
@@ -777,6 +779,7 @@ module.exports = {
     '30': 30,
     '40': 40,
     '50': 50,
+    '9999': 9999
   },
 
 

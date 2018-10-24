@@ -1,7 +1,6 @@
 <template>
   <div>
-    {{ form }}
-    <AppTextarea name="bio" v-model="form.bio" />
+    <AppModal />
   </div>
 </template>
 
@@ -10,6 +9,7 @@ import AppInput from '@/components/AppInput'
 import AppLabel from '@/components/AppLabel'
 import AppButton from '@/components/AppButton'
 import AppTextarea from '@/components/AppTextarea'
+import AppModal from '@/components/AppModal'
 
 export default {
   name: 'home',
@@ -17,7 +17,8 @@ export default {
     AppButton,
     AppInput,
     AppLabel,
-    AppTextarea
+    AppTextarea,
+    AppModal
   },
   data() {
     return {
