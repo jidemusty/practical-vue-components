@@ -24,13 +24,20 @@ export default {
       type: String
     }
   },
-  mounted() {
+  beforeMount() {
     this.$modal.$event.$on("show", (modal, params) => {
       if (this.name === modal) {
         this.params = params;
         this.visible = true;
       }
     });
+  },
+  mounted () {
+    document.addEventListener('keydown', (e) => {
+      if (this.visible && e.keyCode === 27) {
+        this.visible = false;
+      }
+    })
   }
 };
 </script>
