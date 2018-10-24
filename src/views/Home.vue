@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-sign-in-modal />
-    <a href="#" @click.prevent="$modal.show('signin')">Open Modal</a>
+    <a href="#" @click.prevent="openModal">Open Modal</a>
   </div>
 </template>
 
@@ -30,5 +30,10 @@ export default {
       }
     }
   },
+  methods: {
+    openModal() {
+      this.$modal.show('signin', { name: "Mustapha" })
+    }
+  }
 }
 </script>

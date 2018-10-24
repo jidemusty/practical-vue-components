@@ -3,7 +3,7 @@
         <div class="app-modal" @click.prevent="visible = false"></div>
         <div class="app-modal-inner">
             <a href="#" @click.prevent="visible = false">Close</a>
-            <slot />
+            <slot name="body" :params="params" />
         </div>
     </div>
 </template>
@@ -12,6 +12,7 @@
 export default {
   data() {
     return {
+      params: {},
       visible: false
     };
   },
@@ -22,8 +23,9 @@ export default {
     }
   },
   mounted() {
-    this.$modal.$event.$on("show", modal => {
+    this.$modal.$event.$on("show", (modal, params) => {
       if (this.name === modal) {
+        this.params = params;
         this.visible = true;
       }
     });

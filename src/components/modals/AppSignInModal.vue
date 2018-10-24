@@ -1,6 +1,8 @@
 <template>
     <AppModal name="signin">
-        Signin
+        <template slot="body" slot-scope="{ params }">
+            Sign in {{ params.name }}
+        </template>
     </AppModal>
 </template>
 
