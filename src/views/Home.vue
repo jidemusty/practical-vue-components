@@ -1,6 +1,7 @@
 <template>
   <div>
-    <AppModal />
+    <app-sign-in-modal />
+    <a href="#" @click.prevent="$modal.show('signin')">Open Modal</a>
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import AppLabel from '@/components/AppLabel'
 import AppButton from '@/components/AppButton'
 import AppTextarea from '@/components/AppTextarea'
 import AppModal from '@/components/AppModal'
+import AppSignInModal from '@/components/modals/AppSignInModal'
 
 export default {
   name: 'home',
@@ -18,7 +20,8 @@ export default {
     AppInput,
     AppLabel,
     AppTextarea,
-    AppModal
+    AppModal,
+    AppSignInModal
   },
   data() {
     return {
