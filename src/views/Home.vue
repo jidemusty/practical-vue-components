@@ -1,21 +1,18 @@
 <template>
   <div>
-    <AppButton :to="{ name: 'signin' }" theme="primary" size="normal">
-      Create an account &rarr;
-    </AppButton>
-    <AppButton theme="danger" size="large" disabled @click.prevent="doThis">
-      Upvote
-    </AppButton>
+    <AppInput name="first_name" type="password" />
   </div>
 </template>
 
 <script>
+import AppInput from '@/components/AppInput'
 import AppButton from '@/components/AppButton'
 
 export default {
   name: 'home',
   components: {
-    AppButton
+    AppButton,
+    AppInput
   },
   methods: {
     doThis() {
