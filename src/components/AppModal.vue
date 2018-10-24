@@ -24,26 +24,44 @@ export default {
       type: String
     }
   },
+  methods: {
+    setVisible() {
+      this.visible = true;
+    },
+    setHidden() {
+      this.visible = false;
+    }
+  },
   beforeMount() {
     this.$modal.$event.$on("show", (modal, params) => {
-      if (this.name === modal) {
-        this.params = params;
-        this.visible = true;
+      if (this.name !== modal) {
+        return;
       }
+
+      this.params = params;
+
+      if (!this.$listeners["before-open"]) {
+        this.setVisible();
+        return;
+      }
+
+      this.$emit("before-open", () => {
+        this.setVisible();
+      });
     });
 
-    this.$modal.$event.$on('hide', (modal) => {
+    this.$modal.$event.$on("hide", modal => {
       if (this.name === modal) {
-        this.visible = false;
+        this.setHidden();
       }
-    })
+    });
   },
-  mounted () {
-    document.addEventListener('keydown', (e) => {
+  mounted() {
+    document.addEventListener("keydown", e => {
       if (this.visible && e.keyCode === 27) {
         this.visible = false;
       }
-    })
+    });
   }
 };
 </script>
@@ -73,11 +91,13 @@ export default {
   z-index: 9999;
 }
 
-.modal-enter-active, .modal-leave-active {
+.modal-enter-active,
+.modal-leave-active {
   transition: all 200ms;
 }
 
-.modal-enter, .modal-leave-active {
+.modal-enter,
+.modal-leave-active {
   opacity: 0;
 }
 </style>
