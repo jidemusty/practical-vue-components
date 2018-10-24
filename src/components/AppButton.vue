@@ -1,11 +1,11 @@
 <template>
     <router-link 
-        class="px-5 py-2 border-none no-underline rounded text-white"
+        class="border-none no-underline rounded text-white"
         :to=to
-        :class="{
-            'bg-blue': primary,
-            'bg-red': danger
-        }"
+        :class="[
+            themes[theme],
+            sizes[size]
+        ]"
     >
         Sign In
     </router-link>
@@ -13,16 +13,28 @@
 
 <script>
 export default {
+    data() {
+        return {
+            themes: {
+                primary: 'bg-blue',
+                danger: 'bg-red'
+            },
+            sizes: {
+                normal: 'px-4 py-2',
+                large: 'px-6 py-4'
+            }
+        }
+    },
     props: {
-        primary: {
+        theme: {
             required: false,
-            type: Boolean,
-            default: true
+            type: String,
+            default: 'primary'
         },
-        danger: {
+        size: {
             required: false,
-            type: Boolean,
-            default: false
+            type: String,
+            default: 'normal'
         },
         to: {
             required: false,
