@@ -4,6 +4,7 @@
             :type="inputType"
             :name="name"
             :id="name"
+            :value="value"
             class="block mb-2 p-3 shadow-outline w-full"
             @input="$emit('input', $event.target.value)"
         />
@@ -22,6 +23,11 @@ export default {
         }
     },
     props: {
+        value: {
+            required: false,
+            type: String,
+            default: ""
+        },
         type: {
             required: false,
             type: String,
