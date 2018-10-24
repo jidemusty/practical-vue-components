@@ -1,11 +1,12 @@
 <template>
     <div>
         <input
+            v-bind="$attrs"
             :type="inputType"
             :name="name"
             :id="name"
             :value="value"
-            class="block mb-2 p-3 shadow-outline w-full"
+            class="block mb-2 mt-2 p-3 shadow-outline w-full"
             @input="$emit('input', $event.target.value)"
         />
 
@@ -47,6 +48,6 @@ export default {
         toggleVisibility () {
             this.inputType = this.inputType === 'password' ? 'text' : 'password'
         }
-    }
+    },
 }
 </script>

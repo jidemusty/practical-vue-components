@@ -1,19 +1,21 @@
 <template>
   <div>
-    {{ form }}
-    <AppInput name="first_name" type="email" v-model="form.email" />
+    <AppLabel forInput="first_name">First name</AppLabel>
+    <AppInput name="first_name" type="email" placeholder="Enter your email" />
   </div>
 </template>
 
 <script>
 import AppInput from '@/components/AppInput'
+import AppLabel from '@/components/AppLabel'
 import AppButton from '@/components/AppButton'
 
 export default {
   name: 'home',
   components: {
     AppButton,
-    AppInput
+    AppInput,
+    AppLabel
   },
   data() {
     return {
